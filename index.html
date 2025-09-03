@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Learning Roadmap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Roadmap</h3>
+            <ul>
+                <li><a href="#beginner">🔰 Beginner</a></li>
+                <li><a href="#intermediate">⚡ Intermediate</a></li>
+                <li><a href="#advanced">🚀 Advanced</a></li>
+                <li><a href="#project-flow">🏗️ Project Flow</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <header>
+                <h1>📌 Git & GitHub Learning Roadmap</h1>
+                <p class="intro">A step-by-step guide to mastering Git and GitHub, from beginner to advanced. We'll build a real project called <strong>MyPortfolio</strong> along the way.</p>
+            </header>
+
+            <section id="beginner">
+                <h2>🔰 Beginner Level</h2>
+                
+                <article>
+                    <h3>1. Introduction to Git & GitHub</h3>
+                    <p>Before we start building our portfolio, let's understand our tools.</p>
+                    <ul>
+                        <li><strong>What is Git?</strong> It’s a Version Control System (VCS). Think of it as a "save" button for your code that lets you track every change and go back in time if you make a mistake.</li>
+                        <li><strong>What is GitHub?</strong> It’s a website to host your Git projects. It's like a social network for coders where you can store your code, collaborate with others, and showcase your work.</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h3>2. Setting up Your Environment</h3>
+                    <p>First, you need to install and configure Git on your computer.</p>
+                    <p><strong>For Windows:</strong></p>
+                    <ol>
+                        <li>Download the installer from the official <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> website.</li>
+                        <li>Run the installer and follow the setup instructions. The default options are usually fine for beginners.</li>
+                        <li>Once installed, you can use the "Git Bash" application that comes with it, which provides a powerful command-line experience.</li>
+                    </ol>
+                    <p><strong>For macOS & Linux:</strong></p>
+                    <pre><code># Install on Mac (using Homebrew)
+brew install git
+
+# Install on Linux (Debian/Ubuntu)
+sudo apt install git</code></pre>
+                    <p>After installing, open your terminal (or Git Bash on Windows) and check the version to confirm it's installed correctly:</p>
+                    <pre><code># Check the version
+git --version</code></pre>
+                    <p>Now, introduce yourself to Git. This name and email will be attached to every commit you make.</p>
+                    <pre><code>git config --global user.name "Your Name"
+git config --global user.email "your@email.com"</code></pre>
+                </article>
+
+                <article>
+                    <h3>3. Creating Your First Project: MyPortfolio</h3>
+                    <p>Let's create a folder for our project and initialize Git inside it.</p>
+                    <pre><code>mkdir MyPortfolio
+cd MyPortfolio
+git init</code></pre>
+                    <p>The <code>git init</code> command creates a hidden <code>.git</code> folder, which is the "brain" of your repository where Git stores all the version history.</p>
+                </article>
+
+                <article>
+                    <h3>4. The Basic Workflow: Add & Commit</h3>
+                    <p>Let's create a simple homepage for our portfolio and save our first snapshot.</p>
+                    <pre><code>echo "<h1>Welcome to My Portfolio</h1>" > index.html
+git status
+git add index.html
+git commit -m "Create initial homepage"</code></pre>
+                    <ul>
+                        <li><code>git status</code>: Shows you the current state of your project (what's changed, what's new).</li>
+                        <li><code>git add <file></code>: Stages a specific file, preparing it for the next commit.</li>
+                        <li><code>git add .</code> : Stages all new and modified files in the current directory. This is a useful shortcut when you want to commit everything you've worked on.</li>
+                        <li><code>git commit</code>: Saves a snapshot of the staged files to your project's history. The <code>-m</code> flag is for the commit message.</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h3>5. Viewing Your Project's History</h3>
+                    <p>You can see the list of commits you've made.</p>
+                    <pre><code>git log
+git log --oneline</code></pre>
+                    <p><code>--oneline</code> gives you a much more compact view of the history.</p>
+                </article>
+
+                <article>
+                    <h3>6. Connecting to GitHub</h3>
+                    <p>It's time to put your project on GitHub!</p>
+                    <ol>
+                        <li>Go to <a href="https://github.com" target="_blank">GitHub.com</a> and create a new repository named <strong>MyPortfolio</strong>.</li>
+                        <li>Connect your local project to this new GitHub repository and push your code.</li>
+                    </ol>
+                    <pre><code> git branch -M main
+                        git remote add origin https://github.com/YOUR_USERNAME/MyPortfolio.git
+
+git push -u origin main</code></pre>
+                    <p>Now, refresh your GitHub page. You should see your <code>index.html</code> file!</p>
+                </article>
+
+                <article>
+                    <h3>7. Cloning a Repository</h3>
+                    <p>Cloning is how you get a copy of a Git repository from a remote source like GitHub. For example, to download your portfolio project on another computer:</p>
+                    <pre><code>git clone https://github.com/YOUR_USERNAME/MyPortfolio.git</code></pre>
+                </article>
+
+                <article>
+                    <h3>8. Ignoring Files with <code>.gitignore</code></h3>
+                    <p>Some files (like environment variables or dependency folders) shouldn't be saved in your repository. We use a <code>.gitignore</code> file to tell Git to ignore them.</p>
+                    <pre><code>echo "node_modules/" > .gitignore
+echo ".env" >> .gitignore</code></pre>
+                    <p>Don't forget to commit this file!</p>
+                    <pre><code>git add .gitignore
+git commit -m "Add .gitignore to exclude files"</code></pre>
+                </article>
+            </section>
+
+            <section id="intermediate">
+                <h2>⚡ Intermediate Level</h2>
+                
+                <article>
+                    <h3>1. Branching: Working on New Features</h3>
+                    <p>Branches let you work on new features (like a contact page for our portfolio) without affecting the main `main` branch.</p>
+                    <pre><code>git branch feature-contact
+git checkout feature-contact</code></pre>
+                    <p>Now you're on the new branch. Let's add a contact page.</p>
+                    <pre><code>echo "<p>Contact me at my@email.com</p>" > contact.html
+git add contact.html
+git commit -m "Add contact page"</code></pre>
+                </article>
+
+                <article>
+                    <h3>2. Merging: Combining Your Work</h3>
+                    <p>Once the feature is complete, you merge it back into your main branch.</p>
+                    <pre><code>git checkout main
+git merge feature-contact</code></pre>
+                    <p>Your `main` branch now has both `index.html` and `contact.html`.</p>
+                </article>
+
+                <article>
+                    <h3>3. Resolving Merge Conflicts</h3>
+                    <p>Sometimes, Git can't automatically merge changes if the same lines were edited on both branches. This is a <strong>merge conflict</strong>. You have to manually edit the file to resolve the conflict, then commit the fix.</p>
+                    <pre><code># After manually fixing the file
+git add conflicted_file.html
+git commit -m "Resolve merge conflict"</code></pre>
+                </article>
+
+                <article>
+                    <h3>4. Working with Remotes: Push, Pull, Fetch</h3>
+                    <p>To keep your local project and GitHub in sync:</p>
+                    <ul>
+                        <li><code>git push</code>: Sends your committed changes to the remote repository.</li>
+                        <li><code>git pull</code>: Fetches changes from the remote repository and merges them into your current branch.</li>
+                        <li><code>git fetch</code>: Fetches changes from the remote repository but doesn't merge them. This is useful to see what others have done before merging.</li>
+                    </ul>
+                    <pre><code># Push your new contact page feature branch to GitHub
+git push origin feature-contact
+
+# Update your local main branch with changes from GitHub
+git pull origin main</code></pre>
+                </article>
+
+                <article>
+                    <h3>Common Error: Push Rejected (Fetch First)</h3>
+                    <p>Sometimes, when you try to push, you might get an error like <code>! [rejected] main -> main (fetch first)</code>. This is a very common and normal situation!</p>
+                    <p>It simply means that there are changes on the remote repository (on GitHub) that you don't have on your local machine yet. Git is preventing you from accidentally overwriting those changes.</p>
+                    <p><strong>The Solution:</strong> You need to pull the remote changes, merge them with your local work, and then you'll be able to push.</p>
+                    <pre><code># Pull the latest changes from the remote main branch
+git pull origin main
+
+# Git will merge the remote changes into your local files.
+# If there are no conflicts, you can now push your work.
+git push origin main</code></pre>
+                </article>
+
+                <article>
+                    <h3>5. Collaboration: Forks & Pull Requests (PRs)</h3>
+                    <p>This is the heart of collaboration on GitHub. To contribute to someone else's project:</p>
+                    <ol>
+                        <li><strong>Fork</strong> the repository on GitHub (creates your own server-side copy).</li>
+                        <li><strong>Clone</strong> your fork to your local machine.</li>
+                        <li>Create a new branch for your changes.</li>
+                        <li>Make your changes, commit, and <strong>push</strong> to your fork.</li>
+                        <li>Open a <strong>Pull Request</strong> on GitHub to propose your changes to the original project.</li>
+                    </ol>
+                </article>
+
+                <article>
+                    <h3>6. Undoing Mistakes</h3>
+                    <p>Everyone makes mistakes. Here's how to fix them:</p>
+                    <pre><code># Undo the last commit, but keep your changes
+git reset --soft HEAD~1
+
+# COMPLETELY undo the last commit and delete the changes
+git reset --hard HEAD~1
+
+# Revert changes to a file that haven't been committed yet
+git checkout -- file.html</code></pre>
+                </article>
+
+                <article>
+                    <h3>7. Tagging & Releases</h3>
+                    <p>When your portfolio is ready for its first official version, you can tag it.</p>
+                    <pre><code>git tag v1.0
+git push origin v1.0</code></pre>
+                    <p>On GitHub, you can then create a "Release" from this tag, adding release notes.</p>
+                </article>
+
+                <article>
+                    <h3>8. Stashing Changes</h3>
+                    <p>Need to quickly switch branches but your work isn't ready for a commit? Use `git stash`.</p>
+                    <pre><code># Temporarily save your uncommitted changes
+git stash save "WIP - new navbar"
+
+# To get your changes back
+git stash pop</code></pre>
+                </article>
+
+                <article>
+                    <h3>Troubleshooting Common Git Errors</h3>
+                    <p>Here are some common errors you might encounter and how to solve them.</p>
+                    
+                    <h4>1. `fatal: not a git repository`</h4>
+                    <p><strong>Problem:</strong> You're trying to run a Git command in a folder that isn't a Git repository.</p>
+                    <p><strong>Solution:</strong> You either need to navigate to the correct folder, or initialize a new repository in the current folder with `git init`.</p>
+                    <pre><code># Navigate to your project folder
+cd /path/to/MyPortfolio
+
+# Or initialize a new repository
+git init</code></pre>
+
+                    <h4>2. `error: Your local changes would be overwritten by merge`</h4>
+                    <p><strong>Problem:</strong> You have uncommitted local changes, and you're trying to `git pull` changes that would conflict with them.</p>
+                    <p><strong>Solution:</strong> You must commit your local changes or stash them before you can pull.</p>
+                    <pre><code># Option 1: Commit your changes
+git add .
+git commit -m "My local work"
+git pull origin main
+
+# Option 2: Stash your changes
+git stash
+git pull origin main
+git stash pop</code></pre>
+
+                    <h4>3. `fatal: remote origin already exists`</h4>
+                    <p><strong>Problem:</strong> You're trying to add a remote named `origin` using `git remote add`, but one with that name already exists.</p>
+                    <p><strong>Solution:</strong> You can either update the existing remote's URL or remove it and add the new one.</p>
+                    <pre><code># To see your existing remotes
+git remote -v
+
+# To change the URL of the existing origin
+git remote set-url origin https://github.com/NEW_USERNAME/NEW_REPO.git</code></pre>
+
+                    <h4>4. `fatal: refusing to merge unrelated histories`</h4>
+                    <p><strong>Problem:</strong> This often happens when you create a remote repository with a file (like a README) and then try to pull it into a local repository that has its own, separate commit history.</p>
+                    <p><strong>Solution:</strong> You can allow Git to merge the two different histories with a special flag. Use this with care.</p>
+                    <pre><code>git pull origin main --allow-unrelated-histories</code></pre>
+
+                    <h4>5. "Detached HEAD" State</h4>
+                    <p><strong>Problem:</strong> This sounds scary, but it just means you've checked out a specific commit instead of a branch. You're no longer on a branch, so any new commits you make won't belong to any branch.</p>
+                    <p><strong>Solution:</strong> The easiest way to fix this is to check out the branch you want to be on.</p>
+                    <pre><code># Switch back to the main branch
+git checkout main
+
+# If you made commits in the detached state and want to save them:
+# Create a new branch from your current (detached) state
+git branch temp-work
+git checkout main
+git merge temp-work</code></pre>
+                </article>
+            </section>
+
+            <section id="advanced">
+                <h2>🚀 Advanced Level</h2>
+                
+                <article>
+                    <h3>1. Rebasing: A Cleaner History</h3>
+                    <p><code>git rebase</code> is an alternative to `merge`. It rewrites commit history to create a straight, linear history. It can make your project history much easier to read.</p>
+                    <pre><code>git checkout feature-about
+git rebase main</code></pre>
+                    <p><strong>Warning:</strong> Don't rebase branches that are shared with other people.</p>
+                </article>
+
+                <article>
+                    <h3>2. Interactive Rebase</h3>
+                    <p>A powerful tool to clean up your commit history before merging. You can reorder, squash (combine), or reword commits.</p>
+                    <pre><code>git rebase -i HEAD~3</code></pre>
+                </article>
+
+                <article>
+                    <h3>3. Cherry-Picking</h3>
+                    <p>Lets you pick a single commit from one branch and apply it to another. Useful for grabbing a quick bug fix from another branch.</p>
+                    <pre><code>git checkout main
+git cherry-pick <commit-hash></code></pre>
+                </article>
+
+                <article>
+                    <h3>4. GitHub Actions (CI/CD)</h3>
+                    <p>Automate your workflow. For our portfolio, you could set up a GitHub Action to automatically test your HTML for errors or deploy it to a web server every time you push to the `main` branch.</p>
+                </article>
+
+                <article>
+                    <h3>5. Git Hooks</h3>
+                    <p>Scripts that run automatically at certain points in the Git workflow. For example, a `pre-commit` hook could run a linter on your code before you're allowed to commit.</p>
+                    <pre><code># Example: A simple pre-commit hook
+echo 'echo "Running pre-commit checks..."' > .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit</code></pre>
+                </article>
+
+                <article>
+                    <h3>6. Git Bisect: Finding Bugs</h3>
+                    <p>An incredibly useful tool for finding exactly which commit introduced a bug. It performs a binary search through your commit history.</p>
+                    <pre><code>git bisect start
+git bisect bad      # Mark the current commit as broken
+git bisect good <commit-hash> # Mark a past commit as working</code></pre>
+                </article>
+            </section>
+
+            <section id="project-flow">
+                <h2>🏗️ Sample Learning Project Flow</h2>
+                <p>Here's how you can apply everything you've learned to the <strong>MyPortfolio</strong> project:</p>
+                <ol>
+                    <li>Initialize the project locally with `git init`.</li>
+                    <li>Create the `index.html` homepage, commit it, and push to a new repository on GitHub.</li>
+                    <li>Create feature branches for new pages: `feature-about` and `feature-contact`.</li>
+                    <li>On each branch, create the new HTML file, commit it, and push the branch to GitHub.</li>
+                    <li>Open Pull Requests on GitHub to merge your feature branches into `main`.</li>
+                    <li>Add a `.gitignore` file to ignore files like `.env`.</li>
+                    <li>Once you're happy with the site, tag a `v1.0` release.</li>
+                    <li>Use GitHub Pages to deploy your portfolio to the web for free!</li>
+                </ol>
+            </section>
+
+            <footer>
+                <p>Built with ❤️. build@makersgridstudio.com.</p>
+            </footer>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
