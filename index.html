@@ -126,10 +126,20 @@ git commit -m "Add .gitignore to exclude files"</code></pre>
                 
                 <article>
                     <h3>1. Branching: Working on New Features</h3>
-                    <p>Branches let you work on new features (like a contact page for our portfolio) without affecting the main `main` branch.</p>
-                    <pre><code>git branch feature-contact
+                    <p>Branches are one of the most powerful features in Git. They allow you to create an independent line of development to work on new features or bug fixes without affecting the main codebase.</p>
+                    <p><strong>Why create a branch?</strong></p>
+                    <ul>
+                        <li><strong>Safety:</strong> It provides a safe, isolated space for your work. If you make a mistake, you won't break the stable `main` branch that your team relies on.</li>
+                        <li><strong>Collaboration:</strong> Multiple people can work on different features in parallel, each on their own branch.</li>
+                        <li><strong>Organization:</strong> It keeps your commit history clean and organized. Each feature's history is contained within its own branch until it's ready to be merged.</li>
+                    </ul>
+                    <p>Let's create a branch for the new contact page in our portfolio project.</p>
+                    <pre><code># Create a new branch called 'feature-contact'
+git branch feature-contact
+
+# Switch to the new branch to start working on it
 git checkout feature-contact</code></pre>
-                    <p>Now you're on the new branch. Let's add a contact page.</p>
+                    <p>Now you're on the new branch. Any commits you make here will not affect the `main` branch. Let's add a contact page.</p>
                     <pre><code>echo "<p>Contact me at my@email.com</p>" > contact.html
 git add contact.html
 git commit -m "Add contact page"</code></pre>
@@ -137,10 +147,15 @@ git commit -m "Add contact page"</code></pre>
 
                 <article>
                     <h3>2. Merging: Combining Your Work</h3>
-                    <p>Once the feature is complete, you merge it back into your main branch.</p>
-                    <pre><code>git checkout main
+                    <p>Once your feature is complete and tested on its branch, you can merge it back into your main branch to integrate it into the main project.</p>
+                    <pre><code># First, switch back to the branch you want to merge INTO
+git checkout main
+
+# Now, merge the feature branch INTO main
 git merge feature-contact</code></pre>
-                    <p>Your `main` branch now has both `index.html` and `contact.html`.</p>
+                    <p>Your `main` branch now contains all the work from the `feature-contact` branch, including the new `contact.html` file. It's now safe to delete the feature branch if you no longer need it.</p>
+                    <pre><code># Delete the local feature branch
+git branch -d feature-contact</code></pre>
                 </article>
 
                 <article>
