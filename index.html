@@ -273,6 +273,12 @@ git checkout main
 git branch temp-work
 git checkout main
 git merge temp-work</code></pre>
+
+                    <h4>6. Overwriting Remote History with `git push --force`</h4>
+                    <p><strong>Problem:</strong> You've tried `git pull`, but you still can't push, or you've decided that your local version of the project is the correct one and you want to completely overwrite what's on the remote repository.</p>
+                    <p><strong>Solution:</strong> You can use a "force push". <strong>WARNING:</strong> This is a destructive command. It will permanently delete any history on the remote branch that you don't have locally. Only use this if you are absolutely sure you won't be overwriting someone else's work.</p>
+                    <pre><code># This will overwrite the remote 'main' branch with your local 'main' branch
+git push --force origin main</code></pre>
                 </article>
             </section>
 
